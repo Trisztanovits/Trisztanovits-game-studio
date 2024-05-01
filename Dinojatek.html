@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Simple Dino Jump Game</title>
+    <style>
+ body {
+    background-color: #222; /* matt fekete */
+    color: #ffdb58; /* citrom sárga */
+    font-family: Arial, sans-serif;
+    background-image: url(Background.jpg);
+    text-align: center;
+
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.text {
+    width: 45%;
+}
+
+.images {
+    width: 45%;
+}
+
+.images img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.button {
+    display: block;
+    padding: 10px 20px;
+    background-color: #333; /* sötét szürke */
+    color: #ffdb58; /* citrom sárga */
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    background-color: #444; /* sötétebb szürke */
+}
+
+    </style>
+</head>
+<body>
+    <h1>Dino Jump</h1>
+    <div class="button">
+    <a href="index.html" target="_blank" style="text-align: center;" class="button">Vissza a főképernyőre</a>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <script >
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let gameInterval;
+
+        const dino = {
+            x: 50,
+            y: canvas.height - 50,
+            width: 50,
+            height: 50,
+            color: 'green',
+            jumping: false,
+            jumpHeight: 200 // Kétszer nagyobb ugrás
+        };
+
+        const obstacle = {
+            x: canvas.width - 20, // Piros kocka a képernyő alján
+            y: canvas.height - 20, // Piros kocka a képernyő alján
+            width: 40,
+            height: 40,
+            color: 'red',
+            speed: 5
+        };
+
+        function jump() {
+            if (!dino.jumping) {
+                dino.jumping = true;
+                const jumpInterval = setInterval(() => {
+                    dino.y -= 5;
+                    if (dino.y <= canvas.height - dino.jumpHeight) {
+                        clearInterval(jumpInterval);
+                        const fallInterval = setInterval(() => {
+                            dino.y += 5;
+                            if (dino.y >= canvas.height - dino.height) {
+                                dino.y = canvas.height - dino.height;
+                                dino.jumping = false;
+                                clearInterval(fallInterval);
+                            }
+                        }, 20);
+                    }
+                }, 20);
+            }
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = dino.color;
+            ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
+
+            ctx.fillStyle = obstacle.color;
+            ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+
+            obstacle.x -= obstacle.speed;
+
+            if (isCollision()) {
+                gameOver();
+            }
+
+            if (obstacle.x + obstacle.width < 0) {
+                resetObstacle();
+            }
+        }
+
+        function isCollision() {
+            return (
+                dino.x < obstacle.x + obstacle.width &&
+                dino.x + dino.width > obstacle.x &&
+                dino.y < obstacle.y + obstacle.height &&
+                dino.y + dino.height > obstacle.y
+            );
+        }
+
+        function resetObstacle() {
+            obstacle.x = canvas.width - 20;
+            obstacle.y = canvas.height - 20;
+        }
+
+        function startGame() {
+            canvas.width = 400;
+            canvas.height = 200;
+            canvas.style.marginTop = `${(window.innerHeight - canvas.height) / 2}px`;
+            canvas.style.marginLeft = `${(window.innerWidth - canvas.width) / 2}px`;
+
+            gameInterval = setInterval(update, 20);
+        }
+
+    
+        function gameOver() {
+            clearInterval(gameInterval);
+            alert('Game Over! Nyomd meg a "b" billentyűt az újrakezdéshez.');
+            document.addEventListener('keydown', restartOnKeyPress);
+        }
+
+        function restartOnKeyPress(event) {
+            if (event.code === 'KeyB') {
+                document.removeEventListener('keydown', restartOnKeyPress);
+                resetGame();
+            }
+        }
+
+        function resetGame() {
+            clearInterval(gameInterval);
+            dino.y = canvas.height - dino.height;
+            resetObstacle();
+            startGame();
+        }
+        
+        document.addEventListener('keydown', function (event) {
+            if (event.code === 'Space') {
+                jump();
+            }
+        });
+
+        startGame();
+    </script>
+    <div>
+        <p >Pontszám:</p>
+        <div >0</div>
+        <p >Legmagasabb pontszám:</p>
+        <div>0</div>
+      </div>
+      
+      <script>
+        let points = 0;
+        let highScore = localStorage.getItem('highScore') || 0;
+
+        function updateScore() {
+          points += 1;
+          document.getElementById('score').textContent = points;
+          if (points > highScore) {
+      highScore = points;
+      localStorage.setItem('highScore', highScore);
+      document.getElementById('highScore').textContent = highScore;
+    }
+  }
+        function resetScore() {
+    points = 0;
+    document.getElementById('score').textContent = points;
+    if (points > highScore)
+     {
+      highScore = points;
+      localStorage.setItem('highScore', highScore);
+      document.getElementById('highScore').textContent = highScore;
+    }
+  }
+
+        // Pontszám frissítése minden 3. másodpercben
+        setInterval(updateScore, 3000);
+
+         // Eseményfigyelő a "b" billentyű lenyomására
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'b') {
+      resetScore();
+    }
+  });
+   // Legmagasabb pontszám megjelenítése
+   document.getElementById('highScore').textContent = highScore;
+
+   // Eseményfigyelő az oldal bezárására
+  window.addEventListener('beforeunload', function() {
+    // Nullázni a localStorage-ban tárolt értéket
+    localStorage.setItem('highScore', 0);
+  });
+      </script>
+      <script>
+        function buttonClick() {
+          window.location.href = "index.html";
+        }
+      </script>
+</body>
+</html>

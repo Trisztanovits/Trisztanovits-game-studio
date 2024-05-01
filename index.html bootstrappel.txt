@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trisztanovits games Studio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <h1>Kik Vagyunk mi?</h1>
+            <h3>Rólunk.</h3>
+            <p>
+                Mi egy kis játék fejlesztő cég vagyunk, akik szeretnének egy olyan játékot létrehozni, amire az emberek még évek múltán is emlékezhetnek.
+                Sokféle játék ötletünk van, amiket mind szeretnénk megvalósítani. Ezek a játékok nagyon sokrétűek, és biztosak vagyunk abban, hogy minden korosztály
+                megtalálja majd a kedvencét játékaink közül. Vannak +18-as játékaink, amikben minden is van. Valamint olyanok is, amiben minden olyan egyszerű, mint 
+                a hétköznapok.<br>
+                Csapatunk egyelőre csak 1 taggal rendelkezik. Ő a névadó és alapító Trisztanovits.<br>
+                Már számtalan projektben dolgozott különféle platformokon, például: Scratch, App Inventor.<br>
+                Valamint 3 programnyelven is írt programokat.<br>
+                Dizájnolt már CSS-ben.<br>
+                Készített már HTML weboldalakat.<br>
+                Játékait pedig JavaScript-ben szokta megírni.<br>
+            </p>
+            <h2 class="d-sm-none">Egyenlőre 3 ICDL képesítéssel rendelkezik, ezek:</h2>
+            <ol class="d-sm-none">
+                <li>A Szöveg Szerkesztés</li>
+                <li>A Weblap Fejlesztés</li>
+                <li>Az Informatikai Alapismeretek</li>
+            </ol>
+            <p class="d-sm-none"><a href="Önéletrajz.html">Ide kattintva megtalálják az önéletrajzát</a></p>
+            <h3>Játékaink</h3>
+            <ul class="d-sm-none">
+                <li>Gvárdiai Kalandok</li>
+                <li>Gvárdiai Kalandok DLC</li>
+            </ul>
+            <h3>Miért dolgozz nálunk</h3>
+            <ol class="d-sm-none">
+                <li>Megbecsüljük dolgozóinkat</li>
+                <li>Meghallgatjuk ötleteiket</li>
+                <li>Remek csapatépítő programokkal várunk</li>
+                <li>Jól megfizetünk</li>
+                <li>Nincs semmiféle megkülönböztetés</li>
+            </ol>
+            <div class="buttons">
+                <a href="szöveg alapú kalandjáték.html" target="_blank" class="btn btn-primary">Gvárdiai Kalandok</a>
+                <a href="https://www.example.com" target="_blank" class="btn btn-primary">Gvárdiai Kalandok DLC</a>
+                <a href="https://www.example.com" target="_blank" class="btn btn-primary">Titkos Prolyekt</a>
+            </div>
+        </div>
+        <div class="images">
+            <img src="1. pic.jpg" alt="Munkahelyi Kép" class="img-fluid">
+            <img src="2. pic.jpg" alt="Munkahelyi Kép" class="img-fluid">
+            <img src="3. pic.jpg" alt="Munkahelyi Kép" class="img-fluid">
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
