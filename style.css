@@ -1,0 +1,42 @@
+body {
+    background-color: #222; /* matt fekete */
+    color: #ffdb58; /* citrom sárga */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.text {
+    width: 45%;
+}
+
+.images {
+    width: 45%;
+}
+
+.images img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.button {
+    display: block;
+    padding: 10px 20px;
+    background-color: #333; /* sötét szürke */
+    color: #ffdb58; /* citrom sárga */
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    background-color: #444; /* sötétebb szürke */
+}

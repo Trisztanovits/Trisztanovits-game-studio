@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interaktív Történet Játék</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #story {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+        margin-bottom: 20px;
+    }
+
+    #options {
+        margin-top: 20px;
+    }
+
+    button {
+        margin: 5px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+<div id="story"></div>
+<div id="options">
+    <button onclick="chooseOption(1)">Válasz opció 1</button>
+    <button onclick="chooseOption(2)">Válasz opció 2</button>
+    <button onclick="chooseOption(3)">Válasz opció 3</button>
+</div>
+
+<script>
+    var storyDiv = document.getElementById('story');
+    var optionsDiv = document.getElementById('options');
+    var currentStep = 1;
+
+    function displayStory(text) {
+        var index = 0;
+        storyDiv.innerHTML = ''; // Töröljük az előző tartalmat
+        var interval = setInterval(function() {
+            storyDiv.innerHTML += text.charAt(index);
+            index++;
+            if (index === text.length) {
+                clearInterval(interval);
+                displayOptions(); // Szöveg kiírása után jelenítjük meg az opciókat
+            }
+        }, 50); // Karakterszám/másodperc
+    }
+
+    function displayOptions() {
+        var options = getOptions(currentStep);
+        optionsDiv.innerHTML = ''; // Töröljük az előző opciókat
+        for (var i = 0; i < options.length; i++) {
+            var btn = document.createElement('button');
+            btn.textContent = options[i].text;
+            btn.onclick = options[i].action;
+            optionsDiv.appendChild(btn);
+        }
+    }
+
+    function continueStory() {
+        switch (currentStep) {
+            case 1:
+                displayStory('Üdvözöllek vándor íme a csodálatos tájakkal és a világon egyedül álló állat világgal rendelkező Gvárdiai Nagyfejedelemség. A te feládatod hogy megtaláld VI. Henrikünk szeretett Arany medálját. Ha ez sikerül akkor lovaggá ütnek és nemes jutalomban részesülsz. Melyik utat választod?');
+                break;
+            case 2:
+                displayStory('Az erdő mélyén jársz. Egy elágazásnál állsz. Melyik irányba mész tovább?');
+                break;
+            case 3:
+                displayStory('A barlangban sötét van és hűvös. Előre mész vagy visszafordulsz?');
+                break;
+            case 4:
+                displayStory('Visszafordultál és haza mentél. A történet véget ért.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 5:
+                displayStory('Jobbra tartasz és egy tisztáson találod magad. Még mélyebbre mész az erdőbe vagy visszafordulsz?');
+                break;
+            case 6:
+                displayStory('Balra indulsz és egy patakhoz érsz. Átkelsz a patakon vagy visszafordulsz?');
+                break;
+            case 7:
+                displayStory('Előre mész és egy hatalmas sárkányt találsz! A sárkány elkezd morogni rád és lángcsóvák csapnak ki az orrlukaiból. Kétségbe esel nem tudod mit csinálj majd 3 lehetőséget látsz magad előtt.');
+                break;
+            case 8:
+                displayStory('Még mélyebbre mész az erdőbe és elveszel. A történet véget ért.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 9:
+                displayStory('Átkelsz a patakon és megtalálod az elveszett medált! Jaj ne VI Henrik Áttvert és tömlőcbe vetett azért mert kiderült hogy nem Gvárdiai Származású vagy. Te ebben a percben bosszút esküszöl. Meg ígéred magadnak hogy megölöd VI. Henriket és megbaszod a lányát I. Amidala hercegnőt. FOLYTATJUK!!!  ');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 10:
+                displayStory('Visszaértél az elágazáshoz merre mész tovább?');
+                break;
+            case 11:
+                displayStory('A sárkány megesz és meghalsz menekülés közben. A történet véget ért.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 12:
+                displayStory('Harcba szálltál a sárkánnyal és a küzdelem nagyon szoros de jaj a sárkány csak egyre erősebb a harctól. Már csak egyetlen ütésed van mielőtt végleg elfogy az erőd. Milyét vágod le?');
+                break;
+            case 13:
+                displayStory('Szerencsédre a sárkány nő nemű. Sikerült Nagy nehezen becsusztatnod neki a szerszámot és elkezdted döngetni. Úgy tűnik a sárkány egyrejobban élvezi a helyzetet. Mindjárt elfogsz menni. Hova szeretnéd hogy menjen az anyag?');
+                break;
+            case 14:
+                displayStory('Az akció sikertelen volt sajnos a sárkány kivédte az ütésedet és megevett. A történetnek vége.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 15:
+                displayStory('A sárkány megilyedt a hugyszagtól te pedig felpattantál és levágtad a fejét. A fejet eltetted tófe ként.');
+                break;
+            case 16:
+                displayStory('Sikeresen kijutottál a barlangból.');
+                break;
+            case 17:
+                displayStory('Jaj ne a sárkánynak nincs is herélye. Amint ezt észre vetted el akartál menekülni de nem sikerült. A sárkány meg evett. A történetnek vége.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 18:
+                displayStory('Megpróbáltál rá cuccolni az arcára. De jaj a sárkánynak ez nem teccet és leharapta a faszodat. Elvéreztél és meghaltál. A történetnek vége.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 19:
+                displayStory('Úgy döntöttél beolajozod a kapukat. Amint elmentél a sárkányban az hirtelen átt változott egy Gyönyörű vöröshajú nővé. A barlang pedig egy otthonos kis kuckóvá alakul. A nő odajön hozzád ráfog a faszodra és arra kér hogy lakj itt vele valamint arra hogy döngesd meg mégegyszer. Mit választasz?');
+                break;
+            case 20:
+                displayStory('Úgy döntöttél leszarod a küldetést és itt maradsz a nővel. Az eggyütléték nevű dlc hamarosan érkezik!!! Ott lesz lehetőséged pontosan kiválasztani hogyan akarod megdugni a vöröshajú nőt.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 21:
+                displayStory('A nő búcsúzóul még leszop téged majd utadra enged és megígéri hogy vissza vár. Sikeresen kijutsz a barlangból és elindulsz az erdő mélye felé.');
+                break;
+            default:
+                break;
+        }
+    }
+    function getOptions(step) {
+        var options = [];
+        switch (step) {
+            case 1:
+                options = [
+                    { text: 'Elindulok az erdő felé.', action: function() { goToStep(2); } },
+                    { text: 'Az út jobb oldalánál lévő barlang felé veszem az irányt.', action: function() { goToStep(3); } },
+                    { text: 'Visszafordulok és otthon maradok.', action: function() { goToStep(4); } }
+                ];
+                break;
+            case 2:
+                options = [
+                    { text: 'Jobbra tartok.', action: function() { goToStep(5); } },
+                    { text: 'Balra indulok.', action: function() { goToStep(6); } },
+                    { text: 'Visszafordulok.', action: function() { goToStep(1); } }
+                ];
+                break;
+            case 3:
+                options = [
+                    { text: 'Előre mész.', action: function() { goToStep(7); } },
+                    { text: 'Visszafordulok.', action: function() { goToStep(1); } }
+                ];
+                break;
+            case 5:
+                options = [
+                    { text: 'Még mélyebbre megyek az erdőbe.', action: function() { goToStep(8); } },
+                    { text: 'Visszafordulok.', action: function() { goToStep(10); } }
+                ];
+                break;
+            case 6:
+                options = [
+                    { text: 'Átkel a patakon.', action: function() { goToStep(9); } },
+                    { text: 'Visszafordulok.', action: function() { goToStep(10); } }
+                ];
+                break;
+            case 7:
+                options = [
+                    { text: 'Megpróbálsz elmenekülni.', action: function() { goToStep(11); } },
+                    { text: 'Úgy döntesz harcba szállsz a sárkánnyal.', action: function() { goToStep(12); } },
+                    { text: 'Úgy döntesz megdugod a sárkányt.', action: function() { goToStep(13); } }
+                ];
+                break;
+            case 10:
+                options = [
+                    { text: 'Jobbra tartok.', action: function() { goToStep(5); } },
+                    { text: 'Balra indulok.', action: function() { goToStep(6); } },
+                    { text: 'Visszafordulok.', action: function() { goToStep(1); } }
+                ];
+                break;
+            case 13:
+                options = [
+                    { text: 'Az arcára csavarod a répát.', action: function() { goToStep(18); } },
+                    { text: 'Be olajozod a Kaput.', action: function() { goToStep(19); } },
+                ];
+                break;
+            case 12:
+                options = [
+                    { text: 'Levágod a herélyét.', action: function() { goToStep(17); } },
+                    { text: 'Megpróbálod kivágni a szemét.', action: function() { goToStep(14); } },
+                    { text: 'behugyozol.', action: function() { goToStep(15); } }
+                ];
+                break;
+            case 15:
+                options = [
+                    { text: 'Ki mész a barlangból', action: function() { goToStep(16); } },
+                ];
+                break;
+            case 16:
+                options = [
+                    { text: 'Elindulok az erdő mélye felé', action: function() { goToStep(2); } },
+                    { text: 'Mára elég ennyi haza megyek', action: function() { goToStep(4); } },
+                ];
+                break;
+            case 19:
+                options = [
+                    { text: 'Itt maradsz vele hagyod a küldetést a francba és megbaszod mégegyszer.', action: function() { goToStep(20); } },
+                    { text: 'Meg ígéred neki hogy majd vissza jössz élni és megbaszod amint vége a küldetésnek.', action: function() { goToStep(21); } },
+                ];
+                break;
+            case 21:
+                options = [
+                    { text: 'Ki mész a barlangból és elindulsz az erdő mélye felé', action: function() { goToStep(16); } },
+                ];
+                break;
+            default:
+                break;
+        }
+        return options;
+    }
+
+    function goToStep(step) {
+        currentStep = step;
+        continueStory();
+    }
+
+    // Első lépés indítása
+    continueStory();
+</script>
+</body>
+</html>
