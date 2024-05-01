@@ -2,6 +2,7 @@ body {
     background-color: #222; /* matt fekete */
     color: #ffdb58; /* citrom sárga */
     font-family: Arial, sans-serif;
+    background-image: url(Background.jpg);
 }
 
 .container {
