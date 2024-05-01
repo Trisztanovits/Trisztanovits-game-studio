@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interaktív Történet Játék</title>
+<title>Gvárdiai Kaland Part 1</title>
 <style>
     body {
         font-family: 'Arial', sans-serif;
@@ -113,8 +113,7 @@
                 displayStory('Előre mész és egy hatalmas sárkányt találsz! A sárkány elkezd morogni rád és lángcsóvák csapnak ki az orrlukaiból. Kétségbe esel nem tudod mit csinálj majd 3 lehetőséget látsz magad előtt.');
                 break;
             case 8:
-                displayStory('Még mélyebbre mész az erdőbe és elveszel. A történet véget ért.');
-                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                displayStory('Még mélyebbre mész az erdőbe és elveszel. Viszont nem adod fel. Elhatározod hogy nem fogsz meghalni.');
                 break;
             case 9:
                 displayStory('Átkelsz a patakon és megtalálod az elveszett medált! Jaj ne VI Henrik Áttvert és tömlőcbe vetett azért mert kiderült hogy nem Gvárdiai Származású vagy. Te ebben a percben bosszút esküszöl. Meg ígéred magadnak hogy megölöd VI. Henriket és megbaszod a lányát I. Amidala hercegnőt. FOLYTATJUK!!!  ');
@@ -160,6 +159,24 @@
                 break;
             case 21:
                 displayStory('A nő búcsúzóul még leszop téged majd utadra enged és megígéri hogy vissza vár. Sikeresen kijutsz a barlangból és elindulsz az erdő mélye felé.');
+                break;
+            case 22:
+                displayStory('Az erdő egyre sűrűbb és márt csak nagyon lassan haladsz a kardod használata nékül. Hogyan döntesz? Használom a Kardomat.');
+                break;
+            case 23:
+                displayStory('Elő vetted a kardodat és elkezdtél ösvényt vágni a bozótosban. Már haladsz egy idelye és úgy érzed mintha valaki követne. Viszont amikor mindig hátra fordulsz senkit sem látsz. Jaj ne  valaki fejbe vágott és elájultál. Egy indián törzs talált rád Akik Isten ként tekintenek rád viszont meg akarnak szabadítani a tested börtönétől. Mit teszel?');
+                break;
+            case 24:
+                displayStory('Kihasználtad életed utolsó napjait. Ettél ittál. Minden nap más nővel voltál. Viszont az indiánok megettek téged de ne feledd. Az indiánok öröké tisztelni fognak téged. A történet véget ért.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 25:
+                displayStory('Az indiánok meg neszelték hogy el akarsz szökni és az éjszaka leple alatt elvágták a torkodat. A véredet megitták a húsodat megették. A vége történetnek.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 26:
+                displayStory('Megparancsolod az indiánoknak hogy készüljenek fel mert mentek és elfoglaljátok Henrik királyságát. Szerencsédre az indiánok egész életükben erre készültek. Már régóta bosszút akartak álni Henriken azért mert megfosztotta őket földjeik nagy részétől. Út közben egy folyóban megtalálod Henrik medálját és úgy döntesz az lesz a nyakadban amikor legyőzöd őt. Az indián sereg majdnem háromszoros túlerőben van Henrik seregével szemben. Több héten át tartó háborúskodás után Sikerül megölnötök Henriket. Végre helyre ált a béke Gvárdiában. Viszont Henrik lányát Amidalát életben hagytátok. Úgy döntöttél ő lesz az ágyasod. Az indián törzs megválasztott mindenkori vezetőjének. Ez azt jelenti te és a leszármazottaid az örökös törzs vezetők és Gvárdia fejedelmei. !!!Figyelem ha szeretnéd kipróbálni és testre szabni az ágyas kaladjaid Amidalával akkor ezt az együttlétek DLC-ben megteheted!!! HAMAROSAN ÉRKEZIK!!!');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
                 break;
             default:
                 break;
@@ -207,6 +224,12 @@
                     { text: 'Úgy döntesz megdugod a sárkányt.', action: function() { goToStep(13); } }
                 ];
                 break;
+            case 8:
+                options = [
+                    { text: 'Elindulsz egy random irányba.', action: function() { goToStep(22); } },
+                    { text: 'Elkezdesz házat építeni.', action: function() { goToStep(10); } }
+                ];
+                break;
             case 10:
                 options = [
                     { text: 'Jobbra tartok.', action: function() { goToStep(5); } },
@@ -247,6 +270,19 @@
             case 21:
                 options = [
                     { text: 'Ki mész a barlangból és elindulsz az erdő mélye felé', action: function() { goToStep(16); } },
+                ];
+                break;
+            case 22:
+                options = [
+                    { text: 'Igen mindenképpen.', action: function() { goToStep(23); } },
+                    { text: 'Nem nehogy baj legyen.', action: function() { goToStep(21); } },
+                ];
+                break;
+            case 23:
+                options = [
+                    { text: 'Kihasználod a hatalmadat arra hogy élvezd az életet.', action: function() { goToStep(24); } },
+                    { text: 'Elmenekülsz.', action: function() { goToStep(25); } },
+                    { text: 'Elindulsz és megpróbálod megdönteni henrik király hatalmát.', action: function() { goToStep(26); } },
                 ];
                 break;
             default:
