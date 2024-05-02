@@ -116,8 +116,7 @@
                 displayStory('Még mélyebbre mész az erdőbe és elveszel. Viszont nem adod fel. Elhatározod hogy nem fogsz meghalni.');
                 break;
             case 9:
-                displayStory('Átkelsz a patakon és megtalálod az elveszett medált! Jaj ne VI Henrik Áttvert és tömlőcbe vetett azért mert kiderült hogy nem Gvárdiai Származású vagy. Te ebben a percben bosszút esküszöl. Meg ígéred magadnak hogy megölöd VI. Henriket és megbaszod a lányát I. Amidala hercegnőt. FOLYTATJUK!!!  ');
-                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                displayStory('Átkelsz a patakon és megtalálod az elveszett medált! Jaj ne VI Henrik Áttvert és tömlőcbe vetett azért mert kiderült hogy nem Gvárdiai Származású vagy. Te ebben a percben bosszút esküszöl. Meg ígéred magadnak hogy megölöd VI. Henriket és megbaszod a lányát I. Amidala hercegnőt.Már 2 napja ülsz a tömlőcben. A tömlőcben volt időd gondolkodni és 3 lehetőséget látsz magad előtt. Melyiket választod?');
                 break;
             case 10:
                 displayStory('Visszaértél az elágazáshoz merre mész tovább?');
@@ -248,6 +247,13 @@
                 options = [
                     { text: 'Elindulsz egy random irányba.', action: function() { goToStep(22); } },
                     { text: 'Elkezdesz házat építeni.', action: function() { goToStep(27); } }
+                ];
+                break;
+            case 9:
+                options = [
+                    { text: 'Megpróbálsz megszökni.', action: function() { goToStep(22); } },
+                    { text: 'Elkezdesz edgelni.', action: function() { goToStep(27); } },
+                    { text: 'Elkezdesz imádkoz.', action: function() { goToStep(27); } },             
                 ];
                 break;
             case 10:
