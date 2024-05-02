@@ -175,7 +175,27 @@
                 optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
                 break;
             case 26:
-                displayStory('Megparancsolod az indiánoknak hogy készüljenek fel mert mentek és elfoglaljátok Henrik királyságát. Szerencsédre az indiánok egész életükben erre készültek. Már régóta bosszút akartak álni Henriken azért mert megfosztotta őket földjeik nagy részétől. Út közben egy folyóban megtalálod Henrik medálját és úgy döntesz az lesz a nyakadban amikor legyőzöd őt. Az indián sereg majdnem háromszoros túlerőben van Henrik seregével szemben. Több héten át tartó háborúskodás után Sikerül megölnötök Henriket. Végre helyre ált a béke Gvárdiában. Viszont Henrik lányát Amidalát életben hagytátok. Úgy döntöttél ő lesz az ágyasod. Az indián törzs megválasztott mindenkori vezetőjének. Ez azt jelenti te és a leszármazottaid az örökös törzs vezetők és Gvárdia fejedelmei. !!!Figyelem ha szeretnéd kipróbálni és testre szabni az ágyas kaladjaid Amidalával akkor ezt az együttlétek DLC-ben megteheted!!! HAMAROSAN ÉRKEZIK!!!');
+                displayStory('Megparancsolod az indiánoknak hogy készüljenek fel mert mentek és elfoglaljátok Henrik királyságát. Szerencsédre az indiánok egész életükben erre készültek. Már régóta bosszút akartak álni Henriken azért mert megfosztotta őket földjeik nagy részétől. Út közben egy folyóban megtalálod Henrik medálját és úgy döntesz az lesz a nyakadban amikor legyőzöd őt. Az indián sereg majdnem háromszoros túlerőben van Henrik seregével szemben. Több héten át tartó háborúskodás után Sikerül megölnötök Henriket. Végre helyre ált a béke Gvárdiában. Viszont Henrik lányát Amidalát életben hagytátok. Úgy döntöttél ő lesz az ágyasod. Az indián törzs megválasztott mindenkori vezetőjének. Ez azt jelenti te és a leszármazottaid az örökös törzs vezetők és Gvárdia fejedelmei. A történetnek Vége. !!!Figyelem ha szeretnéd kipróbálni és testre szabni az ágyas kaladjaid Amidalával akkor ezt az együttlétek DLC-ben megteheted!!! HAMAROSAN ÉRKEZIK!!!');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 27:
+                displayStory('Először is válaszd ki miből szeretnéd építeni a házadat.Kőből,fából vagy Szalmából.');
+                break;
+            case 28:
+                displayStory('kő házra gondoltál hát az nem fog összejönni. A környéken semmi kő nincsen.');
+                break;
+            case 29:
+                displayStory('Szalmából hmmmm érdekes döntés. A közeli réten nagy a fű. Elmész és lekaszálod a rétet. Lett elég fűved hogy építs egy kis kunyhót. Megépítetted és közeleg az éjszaka.');
+                break;
+            case 30:
+                displayStory('Be mentél a házba és kényelmesen elhelyezkedtél. ELkezdtél gondolkodni azon hogy vajon milyen jutalmat ad majd Henrik neked a medál ért. Elaludtál. De jaj már nem tudjuk meg hogy mit kapsz mivel bele csapott a villám a házba. A házzal együtt pedig te is elégtél. A történetnek vége. ');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 31:
+                displayStory('Kint maradsz és megnézed a naplementét. Elaludtál ott ültő helyedben és kint töltötted az éjszakát. Reggel viszont arra ébredsz hogy a ház elégett és nem maradt belőle semmi. Mit csinálsz most?');
+                break;
+            case 32:
+                displayStory('Kivágsz néhány fát és elkezdesz építkezni. Az építkezés jól halad estére be is tudod fejezni. Beköltözöl a házba és sikerül nyugalmas életet élned. Nem háborgatja semmi a nyugalmadat soha többet. 90 éves korodig boldog életet élsz és egy tüdő gyulladásban veszted életed. A történetnek vége.');
                 optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
                 break;
             default:
@@ -283,6 +303,30 @@
                     { text: 'Kihasználod a hatalmadat arra hogy élvezd az életet.', action: function() { goToStep(24); } },
                     { text: 'Elmenekülsz.', action: function() { goToStep(25); } },
                     { text: 'Elindulsz és megpróbálod megdönteni henrik király hatalmát.', action: function() { goToStep(26); } },
+                ];
+                break;
+            case 27:
+                options = [
+                    { text: 'Kőből akarom.', action: function() { goToStep(28); } },
+                    { text: 'Fából akarom.', action: function() { goToStep(32); } },
+                    { text: 'Szalmából akarom.', action: function() { goToStep(29); } },
+                ];
+                break;
+            case 28:
+                options = [
+                    { text: 'Szalmából építek.', action: function() { goToStep(29); } },
+                    { text: 'Fából építek.', action: function() { goToStep(32); } },
+                ];
+                break;
+            case 29:
+                options = [
+                    { text: 'Be megyek a házba.', action: function() { goToStep(30); } },
+                    { text: 'Még megnézem a naplementét.', action: function() { goToStep(31); } },
+                ];
+                break;
+            case 31:
+                options = [
+                    { text: 'Na elég a szarakodásból. Fából építek.', action: function() { goToStep(32); } },
                 ];
                 break;
             default:
