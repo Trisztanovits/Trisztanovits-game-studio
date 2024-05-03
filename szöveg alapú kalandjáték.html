@@ -197,6 +197,17 @@
                 displayStory('Kivágsz néhány fát és elkezdesz építkezni. Az építkezés jól halad estére be is tudod fejezni. Beköltözöl a házba és sikerül nyugalmas életet élned. Nem háborgatja semmi a nyugalmadat soha többet. 90 éves korodig boldog életet élsz és egy tüdő gyulladásban veszted életed. A történetnek vége.');
                 optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
                 break;
+            case 33:
+                displayStory('Úgy döntöttél megszöksz. A kulcs egy kutyánál van. A kutya viszont bármit is csinálsz nem akarsz megmozdulni. Találsz a zsebedben egy kis kést. Mit csinálsz vele?');
+                break;
+            case 34:
+                displayStory('Megpróbálod megdobni a kutyát és sikerül. A kés bele áll a kutya szemébe és a kutya el kezd vonyítani. Az örök lejönnek és halálra szúrkodnak a késeddel. A történetnek vége.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
+            case 35:
+                displayStory('Fogod és levágod az ujjadat. Oda nyújtod a kutyának de jaj ez nem jött be. A kutya meg se mozdul. Te pedig szépen lassan elvérzel. A történetnek vége.');
+                optionsDiv.innerHTML = ''; // Nincs több választási lehetőség
+                break;
             default:
                 break;
         }
@@ -251,9 +262,9 @@
                 break;
             case 9:
                 options = [
-                    { text: 'Megpróbálsz megszökni.', action: function() { goToStep(22); } },
-                    { text: 'Elkezdesz edgelni.', action: function() { goToStep(27); } },
-                    { text: 'Elkezdesz imádkoz.', action: function() { goToStep(27); } },             
+                    { text: 'Megpróbálsz megszökni.', action: function() { goToStep(33); } },
+                    { text: 'Elkezdesz edgelni.', action: function() { goToStep(); } },
+                    { text: 'Elkezdesz imádkoz.', action: function() { goToStep(); } },             
                 ];
                 break;
             case 10:
@@ -333,6 +344,12 @@
             case 31:
                 options = [
                     { text: 'Na elég a szarakodásból. Fából építek.', action: function() { goToStep(32); } },
+                ];
+                break;
+            case 33:
+                options = [
+                    { text: 'Megpróbálod a megdobni a kutyát.', action: function() { goToStep(34); } },
+                    { text: 'Levágod az ujjad és megeteted a kutyával.', action: function() { goToStep(35); } },
                 ];
                 break;
             default:
